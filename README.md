@@ -54,3 +54,10 @@ An example live demo script that fetches the data via USB from the DAQ hardware 
 <p align="center">
     <a href="https://www.youtube.com/watch?v=n9_hw3k9drk" title="Live Demo of Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device"><img src="http://img.youtube.com/vi/n9_hw3k9drk/0.jpg" /></a>
 </p>
+
+# Noise
+The voltage noise densities were measured for various cases (open inputs, shortened inputs, and 50 Ohm resistors connected to the inputs). In addition, all measurements were performed for the DAQ being supplied by the USB bus and external mains.
+
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/matlab/NoiseResults.png" />
+</p>

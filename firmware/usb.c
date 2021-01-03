@@ -278,11 +278,13 @@ void USB_InterruptHandler(void)
         
         if (USB_Ep1_RXBuffer[0] == 'S' && USB_Ep1_RXBuffer[1] == 'T' && USB_Ep1_RXBuffer[2] == 'A' && USB_Ep1_RXBuffer[3] == 'R' && USB_Ep1_RXBuffer[4] == 'T' && USB_Ep1_RXBuffer[5] == ';')
         {
+            GPIO_LED3_Set();
             MAIN_MeasurementRunning = 1;
         }
         
         if (USB_Ep1_RXBuffer[0] == 'S' && USB_Ep1_RXBuffer[1] == 'T' && USB_Ep1_RXBuffer[2] == 'O' && USB_Ep1_RXBuffer[3] == 'P' && USB_Ep1_RXBuffer[4] == ';')
         {
+            GPIO_LED3_Clear();
             MAIN_MeasurementRunning = 0;
         }
         

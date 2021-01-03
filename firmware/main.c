@@ -65,8 +65,13 @@
 #pragma config TSEQ =       0xFFFF
 #pragma config CSEQ =       0x0
 
+uint32_t __attribute__((coherent)) MAIN_SPI4_DMA0_RXCircularSamplesBuffer[2][SPI_RX_BUFFER_SIZE_SAMPLES] = { 0 };
+uint32_t __attribute__((coherent)) MAIN_SPI1_DMA1_RXCircularSamplesBuffer[2][SPI_RX_BUFFER_SIZE_SAMPLES] = { 0 };
+uint32_t __attribute__((coherent)) MAIN_USB_TXSamplesBuffer[SPI_RX_BUFFER_SIZE_SAMPLES][CHANNELS] = { 0 };
+
 uint8_t MAIN_MeasurementRunning = 0;
 uint8_t MAIN_SamplesRequested = 0;
+
 uint32_t MAIN_SPIDataReadyForUSBTransmissionChannel0 = 0;
 uint32_t MAIN_SPIDataReadyForUSBTransmissionChannel1 = 0;
 
@@ -108,8 +113,8 @@ int main(void)
     SPI1_Init();
     
     /* Initialize DMA controllers */
-    DMA_Init_Channel_0(0);
-    DMA_Init_Channel_1(0);
+    DMA_Init_Channel_0();
+    DMA_Init_Channel_1();
     
     /* Initialize USB */
     USB_Init(0);
@@ -117,17 +122,17 @@ int main(void)
     /* Configure interrupt priorities */
     INTCONSET = _INTCON_MVEC_MASK;    
     
-    IPC41bits.SPI4RXIP = 1; // set SPI4 RX priority to 1
-    IPC41bits.SPI4RXIS = 0; // set SPI4 RX sub-priority to 0    
-    IPC27bits.SPI1RXIP = 1; // set SPI1 RX priority to 1
-    IPC27bits.SPI1RXIS = 0; // set SPI1 RX sub-priority to 0    
+    IPC41bits.SPI4RXIP = 0; // set SPI4 RX priority
+    IPC41bits.SPI4RXIS = 0; // set SPI4 RX sub-priority  
+    IPC27bits.SPI1RXIP = 0; // set SPI1 RX priority
+    IPC27bits.SPI1RXIS = 0; // set SPI1 RX sub-priority
     
     IPC33bits.DMA0IP = 3; // set DMA channel 0 priority to 3
     IPC33bits.DMA0IS = 1; // set DMA channel 0 sub-priority to 1
     IPC33bits.DMA1IP = 3; // set DMA channel 1 priority to 3
     IPC33bits.DMA1IS = 1; // set DMA channel 1 sub-priority to 1
     
-    IPC33bits.USBIP = 7; // set USB priority to 7
+    IPC33bits.USBIP = 1; // set USB priority to 7
     IPC33bits.USBIS = 1; // set USB sub-Priority to 1
     
     /* Enable global interrupts */
@@ -136,43 +141,21 @@ int main(void)
     /* Endless loop */    
     while(1)
     {
-        /* Check if SPI RX Buffers are filled */
+        /* Check if buffers are ready for transmission */
         if (MAIN_SPIDataReadyForUSBTransmissionChannel0 && MAIN_SPIDataReadyForUSBTransmissionChannel1)
         {
-            GPIO_LED1_Set();
-            
-            /* Copy data from SPI Rx buffers to one local buffer */
-            uint32_t usbTxBuffer[SPI_RX_BUFFER_SIZE_SAMPLES][CHANNELS];
-            uint32_t i;
-
-            for (i = 0; i < SPI_RX_BUFFER_SIZE_SAMPLES; i++)
-            {
-                usbTxBuffer[i][0] = SPI4_FullRXSamplesBuffer[i];
-                usbTxBuffer[i][1] = SPI1_FullRXSamplesBuffer[i];
-            }
-            
-            if (MAIN_MeasurementRunning == 1)
+            if (MAIN_MeasurementRunning && MAIN_SamplesRequested)
             {            
-                /* USB transmission */
-                if (MAIN_SamplesRequested == 1)
-                {
-                    GPIO_LED2_Set();
+                /* Transmit data via USB */
+                USB_TXEndpoint1((uint8_t *)(&(MAIN_USB_TXSamplesBuffer[0][0])));
 
-                    /* Transmit data via USB */
-                    USB_TXEndpoint1((uint8_t *)usbTxBuffer);
-
-                    /* Reset flag */
-                    MAIN_SamplesRequested = 0;
-
-                    GPIO_LED2_Clear();
-                }
+                /* Reset flag */
+                MAIN_SamplesRequested = 0;
             }                
 
             /* Reset flags */
             MAIN_SPIDataReadyForUSBTransmissionChannel0 = 0;
-            MAIN_SPIDataReadyForUSBTransmissionChannel1 = 0; 
-            
-            GPIO_LED1_Clear();
+            MAIN_SPIDataReadyForUSBTransmissionChannel1 = 0;
         }
     }
 

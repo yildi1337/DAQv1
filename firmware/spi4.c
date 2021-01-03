@@ -11,10 +11,6 @@
 
 #include "main.h"
 
-uint32_t __attribute__((coherent)) SPI4_RXSamplesBuffer0[SPI_RX_BUFFER_SIZE_SAMPLES] = { 0 };
-uint32_t __attribute__((coherent)) SPI4_RXSamplesBuffer1[SPI_RX_BUFFER_SIZE_SAMPLES] = { 0 };
-uint32_t * SPI4_FullRXSamplesBuffer = 0;
-
 void SPI4_Init(void)
 {
     /* Disable SPI4 interrupts */

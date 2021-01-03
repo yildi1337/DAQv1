@@ -41,8 +41,14 @@ Unfortunately, programming the USB interface without using Harmony is not trivia
   <img src="https://github.com/yildi1337/DAQ/blob/main/pictures/usb_properties.png" />
 </p>
 
-# USB Driver
+# USB Driver and USB Communication
 On the computer side, standard USB drivers such as [WinUSB](https://en.wikipedia.org/wiki/WinUSB) or [libusb-win32](https://sourceforge.net/projects/libusb-win32/) can be used. A user-friendly installation is possible e.g. via [Zadig](https://zadig.akeo.ie/). However, since it is much more comportable, I decided to use the NI-VISA driver from National Instruments than can be installed via the [NI-VISA Driver Wizard](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000x1qzCAA&l=en-US). This results in the great advantage that communication can take place by means of the well-known functions fopen(), fread(), fwrite() and fclose(). Corresponding possibilities for communication with an NI-VISA device are available in various languages such as Python, .NET, C++, Java, Matlab, etc.
 
+# Example Software (Matlab)
+An example live demo script that fetches the data via USB from the DAQ hardware and plots the results both in the time-domain and in the frequency-domain can be found in the subdirectory *matlab*. Below is a screenshot and video of the live demo program in action (I generated various sinusoidal signals using a PeakTech 4025 DDS function generator).
 
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/matlab/LiveDemo.png" />
+</p>
 
+[![Video @ YouTube](http://img.youtube.com/vi/n9_hw3k9drk/0.jpg)](https://www.youtube.com/watch?v=n9_hw3k9drk "Live Demo of Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device")

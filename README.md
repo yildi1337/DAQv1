@@ -12,6 +12,7 @@ Technical summary of the developed platform:
 * ADC: [AD7768BSTZ](https://www.analog.com/en/products/ad7768.html)
 * Number of channels: 2
 * Sample rate: 256 kS/s
+* Resolution: 24 bit
 * Reference voltage: 4.096 V
 * Microcontroller: [PIC32MZ2048EFH064](https://www.microchip.com/wwwproducts/en/PIC32MZ2048EFH064)
 * USB 2.0 Hi-Speed (net data rate: 16.384 MBit/s)

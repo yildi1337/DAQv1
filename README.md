@@ -18,6 +18,8 @@ Technical summary of the developed platform:
 * USB 2.0 Hi-Speed (net data rate: 16.384 MBit/s)
 * Noise: See below
 
+If you have any questions, feel free to contact me!
+
 # Schematics
 Please see subdirectory *schematics*.
 

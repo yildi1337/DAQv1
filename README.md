@@ -30,3 +30,13 @@ The PCB was designed in Autodesk EAGLE 9.6.2 and manufactured by [JLCPCB](https:
 <p align="center">
   <img src="https://github.com/yildi1337/DAQ/blob/main/board/bottomview.png" />
 </p>
+
+# Firmware
+The software running on the PIC32MZ2048EFH064 has been programmed without making use of Microchip's Harmony (please see subdirectory *firmware*). For the development and debugging I used MPLAB X IDE v5.40 and the XC32 Toolchain (v2.41).
+
+# USB
+Unfortunately, programming the USB interface without using Harmony is not trivial, especially because the manufacturer's documentation is very poor. There is a helpful thread in the [Microchip forum](https://www.microchip.com/forums/m1083508.aspx), but it is very tedious to get the interface working this way. Maybe the source code from this project is helpful for someone. The following screenshot shows the details after the successful USB enumeration.
+
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/pictures/usb_properties.png" />
+</p>

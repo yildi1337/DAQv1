@@ -1,2 +1,32 @@
 # DAQ
 A Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device
+
+# Details
+The recording of analog measurement signals is often done with so-called data acquisition (DAQ) devices. Commercial devices from [National Instruments](http://www.ni.com) are commonly used, but unfortunately also very expensive. The goal of this project was to develop a first prototype of a low-cost DAQ device that can compete with commercial devices, i.e. both the hardware DAQ board as well as software for receiving and analyzing the data is necessary.
+
+The basic structure of a DAQ is very simple. In principle, only an analog-to-digital converter (ADC) and an FPGA or microcontroller are needed in order to send the measurement data in real time to a computer. I chose the [AD7768 from Analog Devices](https://www.analog.com/en/products/ad7768.html), which offers up to 8 synchronous channels (but I only use 2 channels), a sampling rate of 256 kS/s and a resolution of 24 bit. Each sample consists of 3 data bytes and one status byte. So with the two channels used, the net data rate is 2 x 256 kS/s x 4 byte = 2.048 MByte/s = 16.384 MBit/s.
+
+To keep the hardware cheap and the compatibility high, I decided to use a microcontroller (and not an FPGA) and a USB connection. Since the net data rate is higher than 12 MBit/s (USB Full-Speed), a USB Hi-Speed connection (up to 480 MBit/s) is required. However, most microcontrollers (e.g. the widely used STM32 family) allow USB Hi-Speed connections only with an additional external PHY. Therefore, I chose a microcontroller from Microchip's PIC32MZ family, since they already have the Hi-Speed PHY integrated.
+
+Technical summary of the developed platform:
+* ADC: [AD7768BSTZ](https://www.analog.com/en/products/ad7768.html)
+* Number of channels: 2
+* Sample rate: 256 kS/s
+* Reference voltage: 4.096 V
+* Microcontroller: [PIC32MZ2048EFH064](https://www.microchip.com/wwwproducts/en/PIC32MZ2048EFH064)
+* USB 2.0 Hi-Speed (net data rate: 16.384 MBit/s)
+* Noise: See below
+
+# Schematics
+Please see subdirectory *schematics*.
+
+# Board
+The PCB was designed in Autodesk EAGLE 9.6.2 and manufactured by [JLCPCB](https://jlcpcb.com/).
+
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/board/topview.png" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/board/bottomview.png" />
+</p>

@@ -51,4 +51,6 @@ An example live demo script that fetches the data via USB from the DAQ hardware 
   <img src="https://github.com/yildi1337/DAQ/blob/main/matlab/LiveDemo.png" />
 </p>
 
-[![Video @ YouTube](http://img.youtube.com/vi/n9_hw3k9drk/0.jpg)](https://www.youtube.com/watch?v=n9_hw3k9drk "Live Demo of Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device")
+<p align="center">
+    [![Video @ YouTube](http://img.youtube.com/vi/n9_hw3k9drk/0.jpg)](https://www.youtube.com/watch?v=n9_hw3k9drk "Live Demo of Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device")
+</p>

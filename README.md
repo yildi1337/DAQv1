@@ -52,5 +52,5 @@ An example live demo script that fetches the data via USB from the DAQ hardware 
 </p>
 
 <p align="center">
-    [![Video @ YouTube](http://img.youtube.com/vi/n9_hw3k9drk/0.jpg)](https://www.youtube.com/watch?v=n9_hw3k9drk "Live Demo of Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device")
+    <a href="https://www.youtube.com/watch?v=n9_hw3k9drk" title="Live Demo of Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device"><img src="http://img.youtube.com/vi/n9_hw3k9drk/0.jpg" /></a>
 </p>

@@ -1,6 +1,14 @@
 # DAQ
 A Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device
 
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/pictures/daq_front.jpg" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/pictures/daq_back.jpg" />
+</p>
+
 # Details
 The recording of analog measurement signals is often done with so-called data acquisition (DAQ) devices. Commercial devices from [National Instruments](http://www.ni.com) are commonly used, but unfortunately also very expensive. The goal of this project was to develop a first prototype of a low-cost DAQ device that can compete with commercial devices, i.e. both the hardware DAQ board as well as software for receiving and analyzing the data is necessary.
 
@@ -25,6 +33,10 @@ Please see subdirectory *schematics*.
 
 # Board
 The PCB was designed in Autodesk EAGLE 9.6.2 and manufactured by [JLCPCB](https://jlcpcb.com/).
+
+<p align="center">
+  <img src="https://github.com/yildi1337/DAQ/blob/main/pictures/daq_inside.jpg" />
+</p>
 
 <p align="center">
   <img src="https://github.com/yildi1337/DAQ/blob/main/board/topview.png" />

@@ -40,3 +40,9 @@ Unfortunately, programming the USB interface without using Harmony is not trivia
 <p align="center">
   <img src="https://github.com/yildi1337/DAQ/blob/main/pictures/usb_properties.png" />
 </p>
+
+# USB Driver
+On the computer side, standard USB drivers such as [WinUSB](https://en.wikipedia.org/wiki/WinUSB) or [libusb-win32](https://sourceforge.net/projects/libusb-win32/) can be used. A user-friendly installation is possible e.g. via [Zadig](https://zadig.akeo.ie/). However, since it is much more comportable, I decided to use the NI-VISA driver from National Instruments than can be installed via the [NI-VISA Driver Wizard](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000x1qzCAA&l=en-US). This results in the great advantage that communication can take place by means of the well-known functions fopen(), fread(), fwrite() and fclose(). Corresponding possibilities for communication with an NI-VISA device are available in various languages such as Python, .NET, C++, Java, Matlab, etc.
+
+
+

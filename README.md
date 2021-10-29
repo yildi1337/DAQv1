@@ -1,5 +1,5 @@
 # DAQv1
-A Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device
+A Dual-Channel, 24-Bit, 256 kS/s Real-Time Hi-Speed USB 2.0 Data Acquisition (DAQ) Device based on PIC32MZ
 
 <p align="center">
   <img src="https://github.com/yildi1337/DAQ/blob/main/pictures/daq_front.jpg" />
